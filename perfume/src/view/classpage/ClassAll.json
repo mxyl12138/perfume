@@ -1,0 +1,123 @@
+{
+  "lists": ["人气Top", "大师咖啡", "小鹿茶精品", "瑞纳冰", "鲜榨果汁", "经典饮品", "BOSS午餐", "健康轻食", "幸运小食", "周边潮品"],
+  "products":[
+    {
+      "id": 1,
+      "name": "香草拿铁",
+      "price": 18.36,
+      "img": "http://localhost:8000/2cy4.jpg"
+    },
+    {
+      "id": 2,
+      "name": "西柚芝士茉香茶",
+      "price": 18.36,
+      "img": "http://localhost:8000/2cy3.jpg"
+    }
+  ],
+  "products1":[
+    {
+      "id": 1,
+      "name": "陨石拿铁",
+      "price": 18.36,
+      "img": "http://localhost:8000/2cy1.jpg"
+    },
+    {
+      "id": 2,
+      "name": "陨石拿铁",
+      "price": 18.36,
+      "img": "http://localhost:8000/2cy2.jpg"
+    },
+    {
+      "id": 3,
+      "name": "陨石拿铁",
+      "price": 18.36,
+      "img": "http://localhost:8000/2cy6.jpg"
+    },
+    {
+      "id": 4,
+      "name": "陨石拿铁",
+      "price": 18.36,
+      "img": "http://localhost:8000/fj2.jpg"
+    },
+    {
+      "id": 5,
+      "name": "陨石拿铁",
+      "price": 18.36,
+      "img": "http://localhost:8000/fj3.jpg"
+    }
+  ],
+  "products2":[
+    {
+      "id": 1,
+      "name": "桃桃芝士红宝石茶",
+      "price": 18.36,
+      "img": "http://localhost:8000/fj5.jpg"
+    },
+    {
+      "id": 2,
+      "name": "桃桃芝士红宝石茶",
+      "price": 18.36,
+      "img": "http://localhost:8000/2cy3.jpg"
+    },
+    {
+      "id": 3,
+      "name": "桃桃芝士红宝石茶",
+      "price": 18.36,
+      "img": "http://localhost:8000/2cy4.jpg"
+    },
+    {
+      "id": 4,
+      "name": "桃桃芝士红宝石茶",
+      "price": 18.36,
+      "img": "http://localhost:8000/2cy1.jpg"
+    },
+    {
+      "id": 5,
+      "name": "桃桃芝士红宝石茶",
+      "price": 18.36,
+      "img": "http://localhost:8000/2cy2.jpg"
+    },
+    {
+      "id": 6,
+      "name": "桃桃芝士红宝石茶",
+      "price": 18.36,
+      "img": "http://localhost:8000/2cy1.jpg"
+    },
+    {
+      "id": 7,
+      "name": "桃桃芝士红宝石茶",
+      "price": 18.36,
+      "img": "http://localhost:8000/2cy5.jpg"
+    },
+    {
+      "id": 8,
+      "name": "桃桃芝士红宝石茶",
+      "price": 18.36,
+      "img": "http://localhost:8000/2cy5.jpg"
+    },
+    {
+      "id": 9,
+      "name": "桃桃芝士红宝石茶",
+      "price": 18.36,
+      "img": "http://localhost:8000/2cy2.jpg"
+    },
+    {
+      "id": 10,
+      "name": "桃桃芝士红宝石茶",
+      "price": 18.36,
+      "img": "http://localhost:8000/2cy1.jpg"
+    },
+    {
+      "id": 11,
+      "name": "桃桃芝士红宝石茶",
+      "price": 18.36,
+      "img": "http://localhost:8000/2cy6.jpg"
+    },
+    {
+      "id": 12,
+      "name": "桃桃芝士红宝石茶",
+      "price": 18.36,
+      "img": "http://localhost:8000/2cy3.jpg"
+    }
+  ]
+}
