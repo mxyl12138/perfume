@@ -13,7 +13,9 @@ export default {
 </script>
 
 <style>
-* {margin:0;padding:0;}
+* {margin: 0;padding: 0;}
+a {text-decoration: none;}
+a :visited {color: black;}
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -21,14 +23,14 @@ export default {
   margin:0;padding:0;
   width: 100%;
   font-size: 14px;
-  box-sizing: border-box;
   position: relative;
+  box-sizing: border-box;
   background-image: url("./image/bg1.jpg");
   background-position: top;
   background-size: contain;
   background-repeat: repeat;
   background-attachment: fixed;
-  color: rgba(15, 15, 15, 0.849)
+  color: rgba(15, 15, 15, 0.849);
 }
 
 /* 轮播图下面点的样式 */
@@ -114,4 +116,6 @@ export default {
 	height: 85px;
 	animation: rotatefresh 4s infinite linear;
 }
+
+.d-none{display: none;}
 </style>

@@ -113,6 +113,7 @@ export default {
 .mt-tabbar{
   background: #ffffffb7;
   border-top: 1px solid #cdcdcd;
+  z-index: 100;
 }
 
 

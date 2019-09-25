@@ -16,15 +16,31 @@
     </div>
     <!-- 广告下面联动列表 -->
     <div class="outside">
+      <!-- 左边部分 -->
       <div class="outside-left">
         <ul class="left-ul">
-          <li v-for="(name,index) in datas.lists" :key="index" class="left-li" @click="active(index)" :class="{active:currentIndex==index}">{{name}}</li>
+          <a :href="jump">
+            <li v-for="(name,index) in datas.lists" :key="index" class="left-li" @click="active(index)" :class="{active:currentIndex==index}">{{name}}</li>
+          </a>
         </ul>
+
+        <div class="rq-nav d-none onscroll" ref="rscroll">人气Top</div>
+        <div class="rq-nav d-none">大师咖啡</div>
+        <div class="rq-nav d-none">小鹿茶精品</div>
+        <div class="rq-nav d-none">瑞纳冰</div>
+        <div class="rq-nav d-none">鲜榨果汁</div>
+        <div class="rq-nav d-none">经典饮品</div>
+        <div class="rq-nav d-none">BOSS午餐</div>
+        <div class="rq-nav d-none">健康轻食</div>
+        <div class="rq-nav d-none">幸运小食</div>
+        <div class="rq-nav d-none">周边潮品</div>
       </div>
 
-      <div class="outside-right">  
+      <!-- 右边部分 -->
+      <div class="outside-right" ref="side1" @scroll="scrollEvent">  
+
         <div class="rq">
-          <div class="rq-nav">人气Top</div>
+          <div class="rq-nav" id="jump1">人气Top</div>
           <div class="product" v-for="(product,index) in datas.products" :key="index">
             <div class="product_left">
               <img :src="product.img" class="product_img">
@@ -39,7 +55,7 @@
           </div>
         </div>
         <div class="rq m0">
-          <div class="rq-nav">大师咖啡</div>
+          <div class="rq-nav" id="jump2">大师咖啡</div>
           <div class="product" v-for="(product,index) in datas.products1" :key="index">
             <div class="product_left">
               <img :src="product.img" class="product_img">
@@ -54,7 +70,7 @@
           </div>
         </div>
         <div class="rq m0">
-          <div class="rq-nav">小鹿茶精品</div>
+          <div class="rq-nav" id="jump3">小鹿茶精品</div>
           <div class="product" v-for="(product,index) in datas.products2" :key="index">
             <div class="product_left">
               <img :src="product.img" class="product_img">
@@ -69,7 +85,7 @@
           </div>
         </div>
         <div class="rq m0">
-          <div class="rq-nav">瑞纳冰</div>
+          <div class="rq-nav" id="jump4">瑞纳冰</div>
           <div class="product" v-for="(product,index) in datas.products" :key="index">
             <div class="product_left">
               <img :src="product.img" class="product_img">
@@ -85,9 +101,9 @@
         </div>
         <div class="rq m0">
 
-          <div ref="scrollIny">
-            <div>
-          <div class="rq-nav">鲜榨果汁</div>
+          <!-- <div ref="scrollIny">
+            <div> -->
+          <div class="rq-nav" id="jump5">鲜榨果汁</div>
           <div class="product" v-for="(product,index) in datas.products" :key="index">
             <div class="product_left">
               <img :src="product.img" class="product_img">
@@ -102,7 +118,26 @@
           </div>
         </div>
         <div class="rq m0">
-          <div class="rq-nav">经典饮品</div>
+          <div class="rq-nav" id="jump6">经典饮品</div>
+          <div class="product" v-for="(product,index) in datas.products2" :key="index">
+            <div class="product_left">
+              <img :src="product.img" class="product_img">
+            </div>
+            <div class="product_center">
+              <div class="product_name">{{product.name}}</div>
+              <div class="product_price">￥{{product.price}}</div>
+            </div>
+            <div class="product_right">
+              <button class="product_btn">+</button>
+            </div>
+          </div>
+        </div>
+
+          <!-- </div>
+        </div> -->
+
+        <div class="rq m0">
+          <div class="rq-nav" id="jump7">BOSS午餐</div>
           <div class="product" v-for="(product,index) in datas.products" :key="index">
             <div class="product_left">
               <img :src="product.img" class="product_img">
@@ -117,9 +152,57 @@
           </div>
         </div>
 
+        <div class="rq m0">
+          <div class="rq-nav" id="jump8">健康轻食</div>
+          <div class="product" v-for="(product,index) in datas.products1" :key="index">
+            <div class="product_left">
+              <img :src="product.img" class="product_img">
+            </div>
+            <div class="product_center">
+              <div class="product_name">{{product.name}}</div>
+              <div class="product_price">￥{{product.price}}</div>
+            </div>
+            <div class="product_right">
+              <button class="product_btn">+</button>
+            </div>
           </div>
         </div>
 
+        <div class="rq m0">
+          <div class="rq-nav" id="jump9">幸运小食</div>
+          <div class="product" v-for="(product,index) in datas.products1" :key="index">
+            <div class="product_left">
+              <img :src="product.img" class="product_img">
+            </div>
+            <div class="product_center">
+              <div class="product_name">{{product.name}}</div>
+              <div class="product_price">￥{{product.price}}</div>
+            </div>
+            <div class="product_right">
+              <button class="product_btn">+</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="rq m0">
+          <div class="rq-nav" id="jump10">周边潮品</div>
+          <div class="product" v-for="(product,index) in datas.products1" :key="index">
+            <div class="product_left">
+              <img :src="product.img" class="product_img">
+            </div>
+            <div class="product_center">
+              <div class="product_name">{{product.name}}</div>
+              <div class="product_price">￥{{product.price}}</div>
+            </div>
+            <div class="product_right">
+              <button class="product_btn">+</button>
+            </div>
+          </div>
+        </div>
+
+        
+
+        <div style="width:100%;height:60px;opacity:0"></div>
       </div>
     </div>
   </div>  
@@ -132,28 +215,46 @@ export default {
     return {
       datas: mydata,
       currentIndex: 0,
-      scrolly:0,
+      // scrolly: 0,
+      jump: "",
     }
   },
   methods:{
-    _initScroll() {
-      this.scrollBox = new BScroll(this.$refs.scrollIny,{
-        probeType:3,
-        scrolly:true,
-        click: true
-      });
-      this.scrollBox.on("scroll", pos => {
-        this.scrolly = Math.abs(Math.round(pos.y));
-      })
+    scrollEvent(){
+      let sumH = this.$refs.side1.offsetHeight;
+      console.log(sumH)
+      var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+      if(scrollTop>10){//滚动条的高度，可以动态获取也可以写死
+        //这里写要执行的操作
+        console.log(scrollTop)
+      }
     },
+    // _initScroll() {
+    //   this.scrollBox = new BScroll(this.$refs.scrollIny,{
+    //     probeType:3,
+    //     scrolly:true,
+    //     click: true
+    //   });
+    //   this.scrollBox.on("scroll", pos => {
+    //     this.scrolly = Math.abs(Math.round(pos.y));
+    //   })
+    // },
     active(index){
       this.currentIndex = index;
+      this.jump = "#jump" + (index + 1);
+      this.$refs.rscroll.style.class="d-none";
+      // console.log(this.$refs.rscroll);
+      console.log(this.$refs.side1.offsetHeight);
+      
     }
   },
   mounted() {
-    this.$nextTick(()=>{
-      this._initScroll();
+    document.addEventListener('scroll', () => {
+      console.log(123)
     })
+    // this.$nextTick(()=>{
+    //   this._initScroll();
+    // })
     // console.log(BScroll);
   }
 }  
@@ -188,13 +289,17 @@ export default {
 }
 .outside-left{
   width: 25%; height: calc(667px - 107px);
+  position: relative;
+  z-index: 1;
 }
 .left-ul{
   height: calc(667px - 107px);
   border-bottom: 1px solid #cdcdcd;
   background: #f0f0f0;
+  
 }
 .left-li{
+  /* transition: all .2s linear; */
   line-height: 2.8rem;
   text-align: center;
   height: 2.8rem;
@@ -216,6 +321,8 @@ export default {
   background: #fff;
   box-sizing: border-box;
   padding: 12px;
+  overflow: scroll;
+  position: relative;
 }
 .rq{
   width: 100%;
@@ -226,6 +333,13 @@ export default {
   font-weight: bolder;
   font-size: 13px;
   line-height: 40px;
+}
+.onscroll{
+  display: block;
+  position: absolute;
+  top: 0;left: 106px;
+  width: 257.25px;
+  background: #fff;
 }
 
 .product {
