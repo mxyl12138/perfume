@@ -4,16 +4,18 @@ import TabBar from '@/view/TabBar'
 import Test from '@/view/test/Test'
 import ClassNav from '@/view/test/ClassNav'
 import User from '@/view/mypage/myson/User'
-import Order from '@/view/mypage/myson/Order'
 // import Ad from '@/view/firstpage/firstson/Ad'
 // 路由懒加载
 const Ad = ()=> import('@/view/firstpage/firstson/Ad')
+import Order from '@/view/mypage/myson/Order'
+import Product from '@/view/classpage/classson/Product'
 
 Vue.use(Router)
 
 //配置路由映射关系
 export default new Router({
   routes: [
+    { path: '/product/:id', component: Product},
     { path: '/ad', component: Ad},
     // { path: '/ad', component: Ad, meta:{title: '广告'}},
     { path: '/order', component: Order },

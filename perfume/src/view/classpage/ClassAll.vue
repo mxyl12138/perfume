@@ -23,17 +23,6 @@
             <li v-for="(name,index) in datas.lists" :key="index" class="left-li" @click="active(index)" :class="{active:currentIndex==index}">{{name}}</li>
           </a>
         </ul>
-
-        <div class="rq-nav d-none onscroll" ref="rscroll">人气Top</div>
-        <div class="rq-nav d-none">大师咖啡</div>
-        <div class="rq-nav d-none">小鹿茶精品</div>
-        <div class="rq-nav d-none">瑞纳冰</div>
-        <div class="rq-nav d-none">鲜榨果汁</div>
-        <div class="rq-nav d-none">经典饮品</div>
-        <div class="rq-nav d-none">BOSS午餐</div>
-        <div class="rq-nav d-none">健康轻食</div>
-        <div class="rq-nav d-none">幸运小食</div>
-        <div class="rq-nav d-none">周边潮品</div>
       </div>
 
       <!-- 右边部分 -->
@@ -41,7 +30,7 @@
 
         <div class="rq">
           <div class="rq-nav" id="jump1">人气Top</div>
-          <div class="product" v-for="(product,index) in datas.products" :key="index">
+          <div class="product" v-for="(product,index) in datas.products" :key="index" @click="productgo(index)">
             <div class="product_left">
               <img :src="product.img" class="product_img">
             </div>
@@ -56,7 +45,7 @@
         </div>
         <div class="rq m0">
           <div class="rq-nav" id="jump2">大师咖啡</div>
-          <div class="product" v-for="(product,index) in datas.products1" :key="index">
+          <div class="product" v-for="(product,index) in datas.products1" :key="index" @click="productgo(index)">
             <div class="product_left">
               <img :src="product.img" class="product_img">
             </div>
@@ -71,7 +60,7 @@
         </div>
         <div class="rq m0">
           <div class="rq-nav" id="jump3">小鹿茶精品</div>
-          <div class="product" v-for="(product,index) in datas.products2" :key="index">
+          <div class="product" v-for="(product,index) in datas.products2" :key="index" @click="productgo(index)">
             <div class="product_left">
               <img :src="product.img" class="product_img">
             </div>
@@ -86,7 +75,7 @@
         </div>
         <div class="rq m0">
           <div class="rq-nav" id="jump4">瑞纳冰</div>
-          <div class="product" v-for="(product,index) in datas.products" :key="index">
+          <div class="product" v-for="(product,index) in datas.products" :key="index" @click="productgo(index)">
             <div class="product_left">
               <img :src="product.img" class="product_img">
             </div>
@@ -104,7 +93,7 @@
           <!-- <div ref="scrollIny">
             <div> -->
           <div class="rq-nav" id="jump5">鲜榨果汁</div>
-          <div class="product" v-for="(product,index) in datas.products" :key="index">
+          <div class="product" v-for="(product,index) in datas.products" :key="index" @click="productgo(index)">
             <div class="product_left">
               <img :src="product.img" class="product_img">
             </div>
@@ -119,7 +108,7 @@
         </div>
         <div class="rq m0">
           <div class="rq-nav" id="jump6">经典饮品</div>
-          <div class="product" v-for="(product,index) in datas.products2" :key="index">
+          <div class="product" v-for="(product,index) in datas.products2" :key="index" @click="productgo(index)">
             <div class="product_left">
               <img :src="product.img" class="product_img">
             </div>
@@ -138,7 +127,7 @@
 
         <div class="rq m0">
           <div class="rq-nav" id="jump7">BOSS午餐</div>
-          <div class="product" v-for="(product,index) in datas.products" :key="index">
+          <div class="product" v-for="(product,index) in datas.products" :key="index" @click="productgo(index)">
             <div class="product_left">
               <img :src="product.img" class="product_img">
             </div>
@@ -154,7 +143,7 @@
 
         <div class="rq m0">
           <div class="rq-nav" id="jump8">健康轻食</div>
-          <div class="product" v-for="(product,index) in datas.products1" :key="index">
+          <div class="product" v-for="(product,index) in datas.products1" :key="index" @click="productgo(index)">
             <div class="product_left">
               <img :src="product.img" class="product_img">
             </div>
@@ -170,7 +159,7 @@
 
         <div class="rq m0">
           <div class="rq-nav" id="jump9">幸运小食</div>
-          <div class="product" v-for="(product,index) in datas.products1" :key="index">
+          <div class="product" v-for="(product,index) in datas.products1" :key="index" @click="productgo(index)">
             <div class="product_left">
               <img :src="product.img" class="product_img">
             </div>
@@ -186,7 +175,7 @@
 
         <div class="rq m0">
           <div class="rq-nav" id="jump10">周边潮品</div>
-          <div class="product" v-for="(product,index) in datas.products1" :key="index">
+          <div class="product" v-for="(product,index) in datas.products1" :key="index" @click="productgo(index)">
             <div class="product_left">
               <img :src="product.img" class="product_img">
             </div>
@@ -209,55 +198,35 @@
 </template>
 <script>
 import mydata from './ClassAll.json'
-import BScroll from 'better-scroll'
+// import BScroll from 'better-scroll'
 export default {
   data(){
     return {
       datas: mydata,
       currentIndex: 0,
       // scrolly: 0,
-      jump: "",
+      jump: ""
     }
   },
   methods:{
-    scrollEvent(){
-      let sumH = this.$refs.side1.offsetHeight;
-      console.log(sumH)
-      var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
-      if(scrollTop>10){//滚动条的高度，可以动态获取也可以写死
-        //这里写要执行的操作
-        console.log(scrollTop)
-      }
+    productgo(index){
+      console.log(this.datas.products2[index].id);
+      
+      this.$router.push('/product/'+this.datas.products2[index].id)
     },
-    // _initScroll() {
-    //   this.scrollBox = new BScroll(this.$refs.scrollIny,{
-    //     probeType:3,
-    //     scrolly:true,
-    //     click: true
-    //   });
-    //   this.scrollBox.on("scroll", pos => {
-    //     this.scrolly = Math.abs(Math.round(pos.y));
-    //   })
-    // },
+    scrollEvent(){
+    },
     active(index){
       this.currentIndex = index;
       this.jump = "#jump" + (index + 1);
-      this.$refs.rscroll.style.class="d-none";
-      // console.log(this.$refs.rscroll);
-      console.log(this.$refs.side1.offsetHeight);
-      
     }
   },
   mounted() {
     document.addEventListener('scroll', () => {
       console.log(123)
     })
-    // this.$nextTick(()=>{
-    //   this._initScroll();
-    // })
-    // console.log(BScroll);
   }
-}  
+}
 </script>
 <style scoped>
 #app {
@@ -317,6 +286,8 @@ export default {
 
 /* 右边商品 */
 .outside-right{
+  border-top: 12px solid #ffffff;
+  scroll-behavior: smooth;
   width: 75%;
   background: #fff;
   box-sizing: border-box;
@@ -334,13 +305,13 @@ export default {
   font-size: 13px;
   line-height: 40px;
 }
-.onscroll{
+/* .onscroll{
   display: block;
   position: absolute;
   top: 0;left: 106px;
   width: 257.25px;
   background: #fff;
-}
+} */
 
 .product {
   height: 96px;
@@ -393,5 +364,7 @@ export default {
 /* .product_btn :active{
   background: #F899A0
 } */
-
+article.rq-nav:target{
+  padding-top:44px;
+}
 </style>
