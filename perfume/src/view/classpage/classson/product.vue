@@ -1,7 +1,18 @@
 <template>
   <div id="app">
     <div class="my-bar my-title" @click="prev">看了不买，手都给你剁了<img src="../../../image/left.png"></div>
-    <div class="placehold"></div>
+    <!-- <div class="placehold"></div> -->
+    <div class="mylbt">
+      <mt-swipe :auto="3000" :speed="1000">
+        <mt-swipe-item v-for="(item,index) in list" :key="index">
+          <!--<a :href="item.href" rel="external nofollow" >-->
+          <img :src="item.img" class="lbt-img" @click="lbtgo(index)"/>
+          <img :src="item.img" class="lbt-img" @click="lbtgo(index)"/>
+          <!--<span class="desc"></span>-->
+          <!--</a>-->
+        </mt-swipe-item>
+      </mt-swipe>
+    </div>
     <div>
       <div>
 
@@ -39,15 +50,23 @@
 export default {
   data(){
     return {
-
+      list:[]
     }
   },
   created(){
-    document.title = "product"
+    this.loadmore()
   },
   methods: {
+    loadmore(){
+      var url = "product";
+      var obj = { id:this.$route.params.id };
+      this.axios.get(url,{params:obj}).then(res=>{this.list = res.data.data})
+    },
     prev(){
       this.$router.back(-1)
+    },
+    lbtgo(index){
+
     }
   }
 }  
@@ -59,8 +78,24 @@ export default {
 }
 
 
+/*轮播图 */
+.mylbt {
+  width: 100%;
+  height: 230px;
+  overflow: hidden;
+  background: rgba(236, 177, 158, 0.308);
+}
+.lbt-img {
+  width: 89%;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0px 0px 12px 1px rgba(236, 177, 158, 0.308);
+}
 
 
+
+
+/* 底部一排玩意儿 */
 .f-flex{
   display: flex;
   position: fixed;
@@ -129,6 +164,6 @@ export default {
   font-weight: bolder;
   color: #fff;
   font-size: 15px;
-  background: #bbbaba;
+  background: #e9971c;
 }
 </style>

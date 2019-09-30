@@ -38,3 +38,4 @@ server.get("/login", (req, res) => {
   });
 })
 
+module.exports = login;

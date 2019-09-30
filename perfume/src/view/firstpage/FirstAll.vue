@@ -9,10 +9,10 @@
     </div>
     <!-- 轮播图 -->
     <div class="mylbt">
-      <mt-swipe :auto="4000" :speed="1000">
+      <mt-swipe :auto="3000" :speed="1000">
         <mt-swipe-item v-for="(item,index) in items" :key="index" style="padding:20px 20px">
           <!--<a :href="item.href" rel="external nofollow" >-->
-          <img :src="item.url" class="img" @click="lbtgo(index)" />
+          <img :src="item.url" class="lbt-img" @click="lbtgo(index)" />
           <!--<span class="desc"></span>-->
           <!--</a>-->
         </mt-swipe-item>
@@ -533,7 +533,7 @@ input[type="search"] {
   overflow: hidden;
   background: rgba(236, 177, 158, 0.308);
 }
-.img {
+.lbt-img {
   width: 89%;
   border-radius: 8px;
   overflow: hidden;

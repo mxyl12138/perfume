@@ -42,4 +42,16 @@ server.use(session({
 //http://127.0.0.1:8000/2cy1.jpg
 server.use(express.static("public"));
 
+const product = require("./router/product");
+server.use('/product',product)
 
+server.get("/product",(req,res)=>{
+  var id = req.query.id;
+  var sql="select uid,name,ad,price,sell,img from pf_product where id=?"
+  pool.query(sql,[id],(err,result)=>{
+    if (err) throw err;
+    res.send({
+      code: 1,msg: "查询成功",data:result
+    })
+  })
+})

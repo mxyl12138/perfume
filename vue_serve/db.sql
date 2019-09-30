@@ -4,6 +4,7 @@
 #功能一:创建表xz_login 用户登录表
 USE xz;
 
+
 #功能二:添加二条测试数据 
 INSERT INTO xz_login VALUES(null,'tom',md5('123'));
 INSERT INTO xz_login VALUES(null,'jerry',md5('123'));

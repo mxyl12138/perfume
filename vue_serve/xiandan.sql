@@ -75,7 +75,7 @@ INSERT INTO wy_index_carousel VALUES
 
 
 
-#首页品牌制造商 
+#首页品牌制造商
 CREATE TABLE brand_manufacturer(
   cid INT PRIMARY KEY AUTO_INCREMENT,
   img VARCHAR(128),

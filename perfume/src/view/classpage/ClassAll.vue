@@ -211,8 +211,8 @@ export default {
   methods:{
     productgo(index){
       console.log(this.datas.products2[index].id);
-      
-      this.$router.push('/product/'+this.datas.products2[index].id)
+      let id = this.datas.products2[index].id;
+      this.$router.push({path:`/product/${id}`})
     },
     scrollEvent(){
     },
