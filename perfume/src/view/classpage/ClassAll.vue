@@ -221,10 +221,14 @@ export default {
       this.jump = "#jump" + (index + 1);
     }
   },
+  created(){
+    
+  },
   mounted() {
     document.addEventListener('scroll', () => {
-      console.log(123)
-    })
+      console.log(123);
+    });
+    
   }
 }
 </script>
@@ -357,6 +361,7 @@ export default {
   background: #82C0D5;
   border: 0;
   color: #fff;
+  line-height: 20px;
   width:20px; height: 20px;
   border-radius: 100px;
   outline: none;

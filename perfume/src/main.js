@@ -9,6 +9,11 @@ import MintUI from "mint-ui"
 import "mint-ui/lib/style.css"
 //1.3 将mint-ui 注册vue
 Vue.use(MintUI)
+
+import Vant from 'vant';
+import 'vant/lib/index.css';
+Vue.use(Vant);
+
 //main.js 配置axios
 //1.5:引入axios库
 import axios from "axios"
@@ -31,7 +36,8 @@ Vue.use(Vuex)
 //1.11:创建存储对象
 const myStore = new Vuex.Store({
   state: { //集中管理数据属性
-    count: 1
+    count: 1,
+    
   },
   getters: {
     count: (state) => {return state.count}

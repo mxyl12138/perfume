@@ -221,7 +221,7 @@ export default {
       ],
       lists: [
         {
-          href: "/product",
+          href: "/CartAll",
           name: "正装香水",
           url: "http://localhost:8000/fj1.jpg"
         },

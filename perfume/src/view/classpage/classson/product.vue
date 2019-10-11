@@ -3,20 +3,27 @@
     <div class="my-bar my-title" @click="prev">看了不买，手都给你剁了<img src="../../../image/left.png"></div>
     <!-- <div class="placehold"></div> -->
     <div class="mylbt">
-      <mt-swipe :auto="3000" :speed="1000">
-        <mt-swipe-item v-for="(item,index) in list" :key="index">
-          <!--<a :href="item.href" rel="external nofollow" >-->
-          <img :src="item.img" class="lbt-img" @click="lbtgo(index)"/>
-          <img :src="item.img" class="lbt-img" @click="lbtgo(index)"/>
-          <!--<span class="desc"></span>-->
-          <!--</a>-->
-        </mt-swipe-item>
-      </mt-swipe>
-    </div>
-    <div>
-      <div>
+      <van-swipe @change="onChange" class="lbt-class">
+        <van-swipe-item><div class="lbt1"></div></van-swipe-item>
+        <van-swipe-item><div class="lbt2"></div></van-swipe-item>
+        <van-swipe-item><div class="lbt3"></div></van-swipe-item>
+        <van-swipe-item><div class="lbt4"></div></van-swipe-item>
 
+        <div class="custom-indicator" slot="indicator">
+          {{ current + 1 }}/4
+        </div>
+      </van-swipe>
+    </div>
+    <div class="info-side">
+      <div class="product" v-for="(product,index) in list" :key="index">
+        <div class="product_name">{{product.name}}</div>
+        <div class="price_sell">
+          <span class="product_price">￥{{product.price}}</span>
+          <span class="product_sell">已售{{product.sell}}</span>
+        </div>
       </div>
+
+
     </div>
 
     <div>
@@ -50,23 +57,28 @@
 export default {
   data(){
     return {
+      current: 0,
       list:[]
     }
   },
   created(){
-    this.loadmore()
+    this.loadmore();
   },
+  // props:['id'],
   methods: {
     loadmore(){
       var url = "product";
       var obj = { id:this.$route.params.id };
-      this.axios.get(url,{params:obj}).then(res=>{this.list = res.data.data})
+      // var obj = this.id
+      this.axios.get(url,{params:obj}).then(res=>{this.list = res.data.data});
+      console.log();
+      
     },
     prev(){
       this.$router.back(-1)
     },
-    lbtgo(index){
-
+    onChange(index) {
+      this.current = index;
     }
   }
 }  
@@ -85,13 +97,77 @@ export default {
   overflow: hidden;
   background: rgba(236, 177, 158, 0.308);
 }
-.lbt-img {
-  width: 89%;
-  border-radius: 8px;
+.lbt-class{
+  width: 100%;height: 230px;
   overflow: hidden;
   box-shadow: 0px 0px 12px 1px rgba(236, 177, 158, 0.308);
 }
+.custom-indicator{
+  position: absolute;
+  bottom: 10px;right: 10px;
+}
+.lbt1{
+  width: 100%;height: 230px;
+  background-size: cover;
+  background-image: url(../../../image/2cy1.jpg)
+}
+.lbt2{
+  width: 100%;height: 230px;
+  background-size: cover;
+  background-image: url(../../../image/2cy2.jpg)
+}
+.lbt3{
+  width: 100%;height: 230px;
+  background-size: cover;
+  background-image: url(../../../image/2cy3.jpg)
+}
+.lbt4{
+  width: 100%;height: 230px;
+  background-size: cover;
+  background-image: url(../../../image/2cy4.jpg)
+}
 
+/*info*/
+.info-side {
+  /* scroll-behavior: smooth; */
+  width: 100%;height: 2000px;
+  background: #fff;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 12px;
+  overflow: scroll;
+  position: relative;
+}
+.product {
+  box-sizing: border-box;
+  width: 100%;
+  overflow: hidden;
+}
+.product_name {
+  /* overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis; */
+  overflow:hidden; 
+  text-overflow:ellipsis;
+  display:-webkit-box; 
+  -webkit-box-orient:vertical;
+  -webkit-line-clamp:2; 
+  margin: 4px 0 4px;
+  font-size: 15px;
+  height: 42px;
+}
+.price_sell {
+  font-size: 15px;
+  display: flex;
+  justify-content: space-between;
+}
+.product_price {
+  color: rgb(226, 103, 103);
+}
+.product_sell {
+  color: #7cc4ee;
+  font-size: 13px;
+}
 
 
 

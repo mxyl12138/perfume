@@ -73,18 +73,29 @@ export default {
   data() {
     return {
       currentIndex1: [
-        { isSelect: false },
         { isSelect: true },
         { isSelect: false },
         { isSelect: false },
+        { isSelect: false },
       ],
-      // selected: "首页",
-      selected: "分类",
+      selected: "首页",
+      // selected: "分类",
       // selected: "购物车",
       // selected: "我的",
     }
   },
+  created(){
+    this.tabbar();
+  },
   methods:{
+    tabbar(){
+      var tabbar=window.sessionStorage.getItem("tabbar");
+      var selected=window.sessionStorage.getItem("selected");
+      if(tabbar && selected){
+        this.currentIndex1=JSON.parse(tabbar);
+        this.selected=selected
+      }
+    },
     changeState(n) {
       //1:n当前按钮下标
       //2:创建循环数据
@@ -96,6 +107,9 @@ export default {
           this.currentIndex1[i].isSelect = false;
         }
       }
+      var that=this;
+      window.sessionStorage.setItem("tabbar",JSON.stringify(that.currentIndex1));
+      window.sessionStorage.setItem("selected",that.selected);
     }
   }
 }
