@@ -63,11 +63,6 @@
       </div>
     </div>
 
-    <van-action-sheet
-      v-model="show"
-      :actions="actions"
-      @select="onSelect"
-    />
 
   </div>  
 </template>
@@ -77,22 +72,17 @@ export default {
     return {
       current: 0,
       list: [],
-      show: false,
-      actions: [
-        { name: '选项' },
-        { name: '选项' },
-        { name: '选项', subname: '描述信息' }
-      ]
     }
   },
   created(){
-    this.loadmore();
+    this.loadmore2();
   },
   // props:['id'],
   methods: {
-    loadmore(){
-      var url = "product";
-      var obj = { id:this.$route.params.id };
+    loadmore2(){
+      var url = "product2";
+      var obj = { id:this.$route.params.uid };
+      // var obj = this.id
       this.axios.get(url,{params:obj}).then(res=>{this.list = res.data.data});
     },
     prev(){

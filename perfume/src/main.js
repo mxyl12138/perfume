@@ -37,23 +37,25 @@ Vue.use(Vuex)
 const myStore = new Vuex.Store({
   state: { //集中管理数据属性
     count: 1,
-    
+
   },
   getters: {
-    count: (state) => {return state.count}
+    count: (state) => { return state.count }
   },
   //修改数据靠mutations属性
   mutations: {
-    ctrlCount: (state) => {state.count++}
+    ctrlCount: (state) => { state.count++ }
   },
   actions: {
     AsynCount: (context) => {
-      setTimeout(()=>{
+      setTimeout(() => {
         context.commit('ctrlCount')
-      },1500)
+      }, 1500)
     }
   }
 })
+
+
 
 /* eslint-disable no-new */
 new Vue({
@@ -63,5 +65,7 @@ new Vue({
   components: { App },
   template: '<App/>'
 })
+
+
 
 

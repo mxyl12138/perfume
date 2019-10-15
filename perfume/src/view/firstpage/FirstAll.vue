@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="app">
     <div style="width:100%;height:40px;opacity:0"></div>
     <div class="search_out">
       <div class="search">
@@ -10,7 +10,7 @@
     <!-- 轮播图 -->
     <div class="mylbt">
       <mt-swipe :auto="3000" :speed="1000">
-        <mt-swipe-item v-for="(item,index) in items" :key="index" style="padding:20px 20px">
+        <mt-swipe-item v-for="(item,index) in items" :key="index" style="padding:25px 20px">
           <!--<a :href="item.href" rel="external nofollow" >-->
           <img :src="item.url" class="lbt-img" @click="lbtgo(index)" />
           <!--<span class="desc"></span>-->
@@ -32,7 +32,6 @@
         <div class="ad_div">
           
         </div>
-        <div style="display:none;position:absolute;top:520px;left:35%;font-weight: bold;color:#2e2e2e">睡你麻痹起来嗨</div>
       </div>
       <!-- 商品列表导航栏 -->
 
@@ -57,7 +56,7 @@
       </div>
       
       <div class="products">
-        <div class="product" v-for="(product,index) in products" :key="index">
+        <div class="product" v-for="(product,index) in products" :key="index" @click="productgo(index)">
           <img class="product_img" :src="product.url" />
           <div class="product_name">{{product.name}}</div>
           <div class="price_sell">
@@ -66,7 +65,10 @@
           </div>
         </div>
       </div>
-      <div style="width:100%;height:60px;opacity:0"></div>
+
+      <mt-button size="large" @click="loadmore">加载更多</mt-button>
+
+      <div style="width:100%;height:70px;opacity:0"></div>
     </div>
   </div>
 </template>
@@ -79,18 +81,20 @@ export default {
       this._initScroll();
     });
   },
+  created(){
+    this.loadmore();
+  },
   methods:{
-    changeState(n) {
-      //1:n当前按钮下标
-      //2:创建循环数据
-      for (var i = 0; i < this.currentIndex1.length; i++) {
-        //3:如果当前下标与参数下标一致
-        if(n == i){
-          this.currentIndex1[i].isSelect = true;
-        }else{
-          this.currentIndex1[i].isSelect = false;
-        }
-      }
+    productgo(index){
+      console.log(this.products[index].uid);
+      let uid = this.products[index].uid;
+      this.$router.push({path:`/product2/${uid}`})
+    },
+    loadmore(){
+      var url="firstAll";
+      this.pno++;
+      var obj={pno:this.pno}
+      this.axios.get(url,{params:obj}).then(res=>{this.products=this.products.concat(res.data.data)})
     },
     _initScroll(){
       this.scrollBox = new BScroll(this.$refs.scrollInX, {
@@ -104,6 +108,7 @@ export default {
     },
     //遍历导航条给每个标题绑定事件
     navv(index){
+      console.log(this.products);
       this.currentIndex = index;
       //点击对商品列表排序
       let cindex = this.currentIndex;
@@ -115,7 +120,6 @@ export default {
           }else if(a.price>b.price){
             return 1;
           }
-          return 0;
         });
         for(var i = 0;i < this.products.length;i++) {
           return;
@@ -204,265 +208,65 @@ export default {
           uid: 'aaa',
           title: "你的名字",
           href: "/ad",
-          url: "http://localhost:8000/lbt1.png"
+          url: "http://localhost:8000/lbt1.jpg"
         },
         {
           uid: 'bbb',
           title: "我的名字",
           href: "/ad",
-          url: "http://localhost:8000/lbt2.png"
+          url: "http://localhost:8000/lbt2.jpg"
         },
         {
           uid: 'ccc',
           title: "我的名字",
           href: "/ad",
-          url: "http://localhost:8000/lbt3.png"
+          url: "http://localhost:8000/lbt3.jpg"
         }
       ],
       lists: [
         {
-          href: "/CartAll",
+          // href: "/CartAll",
           name: "正装香水",
-          url: "http://localhost:8000/fj1.jpg"
+          url: "http://localhost:8000/li1.png"
         },
         {
-          href: "/product",
+          // href: "/product",
           name: "香水常味",
-          url: "http://localhost:8000/lbt1.png"
+          url: "http://localhost:8000/li2.png"
         },
         {
-          href: "/product",
+          // href: "/product",
           name: "正装线香",
-          url: "http://localhost:8000/fj4.jpg"
+          url: "http://localhost:8000/li3.png"
         },
         {
-          href: "/product",
+          // href: "/product",
           name: "线香常味",
-          url: "http://localhost:8000/tx1.jpg",
+          url: "http://localhost:8000/li4.png",
         },
         {
-          href: "/login",
+          // href: "/login",
           name: "积分商城",
-          url: "http://localhost:8000/tx2.jpg"
+          url: "http://localhost:8000/li5.png"
         },
         {
-          href: "/login",
+          // href: "/login",
           name: "其他商品",
-          url: "http://localhost:8000/lbt2.png"
+          url: "http://localhost:8000/li6.png"
         },
         {
-          href: "/login",
+          // href: "/login",
           name: "试用",
-          url: "http://localhost:8000/bg4.jpg"
+          url: "http://localhost:8000/li7.png"
         },
         {
-          href: "/login",
+          // href: "/login",
           name: "游戏",
-          url: "http://localhost:8000/tx3.jpg"
+          url: "http://localhost:8000/li8.png"
         }
       ],
-      products: [
-        {
-          id: 1,
-          uid: 20,
-          name: "试香 YSL/圣罗兰 黑鸦片",
-          price: "36.00",
-          sell: "51",
-          url: "http://localhost:8000/2cy1.jpg"
-        },
-        {
-          id: 2,
-          uid: 21,
-          name: "试香 芦丹氏 柏林少女",
-          price: "24.00",
-          sell: "251",
-          url: "http://localhost:8000/2cy2.jpg"
-        },
-        {
-          id: 3,
-          uid: 25,
-          name: "试香 阿蒂仙 冥府之路",
-          price: "88.00",
-          sell: "0",
-          url: "http://localhost:8000/2cy3.jpg"
-        },
-        {
-          id: 4,
-          uid: 22,
-          name: "试香 三宅一生 一生之水",
-          price: "22.00",
-          sell: "886",
-          url: "http://localhost:8000/2cy4.jpg"
-        },
-        {
-          id: 5,
-          uid: 19,
-          name: "试香 欧珑 赤霞橘光",
-          price: "28.00",
-          sell: "281",
-          url: "http://localhost:8000/2cy5.jpg"
-        },
-        {
-          id: 6,
-          uid: 23,
-          name: "试香 百瑞德 无人区玫瑰 Byredo Rose Of No Man's Land",
-          price: "67.00",
-          sell: "0",
-          url: "http://localhost:8000/2cy6.jpg"
-        },
-        {
-          id: 7,
-          uid: 24,
-          name: "试香 古驰 绽放",
-          price: "52.00",
-          sell: "21",
-          url: "http://localhost:8000/2cy7.jpg"
-        },
-        {
-          id: 8,
-          uid: 18,
-          name: "试香 祖马龙 英国梨和小苍兰",
-          price: "20.00",
-          sell: "651",
-          url: "http://localhost:8000/fj1.jpg"
-        },
-        {
-          id: 9,
-          uid: 16,
-          name: "试香 桃丝熊 淘气小熊宝宝",
-          price: "36.00",
-          sell: "29",
-          url: "http://localhost:8000/fj2.jpg"
-        },
-        {
-          id: 10,
-          uid: 14,
-          name: "试香 Burberry/巴宝莉 红粉恋歌",
-          price: "38.88",
-          sell: "15135",
-          url: "http://localhost:8000/lbt1.png"
-        },
-        {
-          id: 11,
-          uid: 17,
-          name: "试香 Juicy/橘滋 脏话男士",
-          price: "65.99",
-          sell: "51",
-          url: "http://localhost:8000/gd1.jpg"
-        },
-        {
-          id: 12,
-          uid: 15,
-          name: "试香 Creed/信仰 银色山泉",
-          price: "81.00",
-          sell: "1",
-          url: "http://localhost:8000/gd2.jpg"
-        },
-        {
-          id: 13,
-          uid: 13,
-          name: "试香 Bvlgari/宝格丽白茶 ",
-          price: "95.00",
-          sell: "0",
-          url: "http://localhost:8000/gd3.jpg"
-        },
-        {
-          id: 14,
-          uid: 12,
-          name: "试香 Kenzo/高田贤三风之恋",
-          price: "69.00",
-          sell: "201",
-          url: "http://localhost:8000/gd4.jpg"
-        },
-        {
-          id: 15,
-          uid: 11,
-          name: "试香 Diptyque/蒂普提克 东京柑橘",
-          price: "26.00",
-          sell: "251",
-          url: "http://localhost:8000/gd5.jpg"
-        },
-        {
-          id: 16,
-          uid: 8,
-          name: "试香 欧珑 无极乌龙 Atelier Cologne",
-          price: "68.00",
-          sell: "20886",
-          url: "http://localhost:8000/lbt2.png"
-        },
-        {
-          id: 17,
-          uid: 9,
-          name: "试香 爱马仕 地中海花园",
-          price: "58.00",
-          sell: "2548",
-          url: "http://localhost:8000/lbt3.png"
-        },
-        {
-          id: 18,
-          uid: 4,
-          name: "试香 FM 一轮玫瑰",
-          price: "150.00",
-          sell: "0",
-          url: "http://localhost:8000/fj3.jpg"
-        },
-        {
-          id: 19,
-          uid: 3,
-          name: "试香 Ck one",
-          price: "77.00",
-          sell: "5",
-          url: "http://localhost:8000/fj4.jpg"
-        },
-        {
-          id: 20,
-          uid: 2,
-          name: "试香 宝格丽 绿茶",
-          price: "53.00",
-          sell: "25",
-          url: "http://localhost:8000/fj5.jpg"
-        },
-        {
-          id: 21,
-          uid: 1,
-          name: "试香 维多利亚秘密 性感炸弹",
-          price: "75.00",
-          sell: "61",
-          url: "http://localhost:8000/2cy2.jpg"
-        },
-        {
-          id: 22,
-          uid: 7,
-          name: "试香 Clean/洁净 雨后",
-          price: "29.00",
-          sell: "851",
-          url: "http://localhost:8000/2cy1.jpg"
-        },
-        {
-          id: 23,
-          uid: 10,
-          name: "试香 4711 白桃与芫荽",
-          price: "102.00",
-          sell: "1051",
-          url: "http://localhost:8000/fj3.jpg"
-        },
-        {
-          id: 24,
-          uid: 6,
-          name: "试香 Loewe 事后清晨",
-          price: "99.00",
-          sell: "121",
-          url: "http://localhost:8000/fj2.jpg"
-        },
-        {
-          id: 25,
-          uid: 5,
-          name: "试香YSL/圣罗兰 黑鸦片",
-          price: "35.00",
-          sell: "841",
-          url: "http://localhost:8000/fj1.jpg"
-        }
-      ]
+      pno:0,
+      products: []
     };
   }
 };
@@ -485,7 +289,7 @@ export default {
   top: 0;
   width: 100%;
   height: 50px;
-  background: rgba(207, 127, 165, 0.9);
+  background: rgba(209, 207, 208, 0.815);
   z-index: 1;
 }
 .search {
@@ -505,7 +309,7 @@ input[type="search"] {
   height: 28px;
   border-radius: 35px;
   font-size: 15px;
-  background: rgba(248, 223, 227, 0.7);
+  background: rgba(255, 255, 255, 0.7);
   outline: none;
   text-indent: 10px;
   border: 0;
@@ -531,48 +335,13 @@ input[type="search"] {
   width: 100%;
   height: 230px;
   overflow: hidden;
-  background: rgba(236, 177, 158, 0.308);
+  /* background:rgba(173, 169, 233, 0.431); */
 }
 .lbt-img {
   width: 89%;
-  border-radius: 8px;
   overflow: hidden;
   box-shadow: 0px 0px 12px 1px rgba(236, 177, 158, 0.308);
 }
-/*下面的两点*/
-/* .mint-swipe {
-  height: 100%;
-  position: relative;
-}
-.mint-swipe-indicators {
-  transform: translate(-50%, -100%) !important;
-} */
-
-/* .mint-swipe-indicator {
-  width: 10px !important;
-  height: 4px !important;
-  border-radius: 150px !important;
-  opacity: 0.8 !important;
-  background: rgb(252, 250, 250) !important;
-}
-.mint-swipe-indicator.is-active {
-  background: rgb(226, 103, 103) !important;
-  width: 18px !important;
-  height: 4px !important;
-} */
-/*
-.desc{
-  font-weight: 600;
-  opacity: .9;
-  padding: 5px;
-  height: 20px;
-  line-height: 20px;
-  width: 100%;
-  color: #fff;
-  background-color: gray;
-  position: absolute;
-  bottom: 0;
-}*/
 
 /*轮播图下的八组列表栏*/
 .mylists {
@@ -584,14 +353,14 @@ input[type="search"] {
   justify-content: space-around;
   margin-top: -10px;
   padding: 10px;
-  background: rgba(27, 173, 71, 0.274);
+  /* background: rgba(27, 173, 71, 0.274); */
 }
 .mylist {
   box-sizing: border-box;
   width: 24%;
   text-align: center;
   border-radius: 5px;
-  box-shadow: 1px 1px 12px 1px rgba(233, 141, 66, 0.144);
+  /* box-shadow: 1px 1px 12px 1px rgba(233, 141, 66, 0.144); */
 }
 .img2 {
   width: 60px;
@@ -601,7 +370,7 @@ input[type="search"] {
 }
 
 .body {
-  background: rgba(132, 127, 207, 0.431);
+  /* background: rgba(132, 127, 207, 0.431); */
 }
 /* 列表下的广告 */
 .ad {
@@ -611,36 +380,15 @@ input[type="search"] {
   margin-top: 15px;
 }
 .ad_div {
-  background-image: url('../../image/2cy1.jpg');
+  background-image: url('../../image/lbt2.jpg');
   height: 90px;
-  box-shadow: 0px 0px 12px 1px rgba(78, 211, 189, 0.486);
-  background-position: 0px -30px;
+  box-shadow: 0px 0px 12px 1px rgba(61, 63, 63, 0.486);
+  background-position: 0px -90px;
   background-size: cover;
   background-repeat: no-repeat;
   border-radius: 3px;
 }
 
-/*商品列表////////////////////////////////////////////////////////////////////*/
-/* .scrollInX {
-    width: 90%;
-    margin: 0 auto;
-    overflow: hidden;
-  }
-  ul.listWrap {
-    list-style:none;
-    width: 600px;
-    display: flex;
-    flex-wrap: nowrap;
-    margin: 0;
-    padding: 0;
-  }
-  li.listItem {
-    flex:1;
-  }
-  li.listItem img {
-    width: 100%;
-    object-fit: cover;
-  } */
 
 /* 商品列表 */
 .product_nav {
@@ -674,10 +422,10 @@ input[type="search"] {
   border-radius: 50px;
 }
 .yellow {
-  color: rgb(150, 190, 139);
+  color: rgb(121, 216, 233);
 }
 .yellow_bg {
-  background-color: rgb(150, 190, 139);
+  background-color: rgb(121, 216, 233);
 }
 
 /*底部商品列表*/
@@ -697,7 +445,8 @@ input[type="search"] {
   overflow: hidden;
 }
 .product_img {
-  height: 160px;
+  width:130%;height: 160px;
+  margin-left: -25px;
 }
 .product_name {
   /* overflow: hidden;

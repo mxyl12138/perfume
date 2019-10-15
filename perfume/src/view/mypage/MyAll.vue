@@ -94,7 +94,7 @@ export default {
   width: 20px;height: 20px;
   background-image: url(../../image/right.png);
   background-size: cover;
-  margin-left: 9.8rem;
+  margin-left: 10.4rem;
 }
 .user-bar> .left{
   width: 80px;height: 80px;
@@ -131,7 +131,7 @@ padding: 0px 0px 0px 0px;
   display: flex;
 }
 /* .sp1{}*/
-.sp2{color: #52a2a3} 
+.sp2{color: #52a2a3;margin-right: 8px;} 
 .sp3{
   width: 20px;height: 20px;
   background-image: url(../../image/right.png);

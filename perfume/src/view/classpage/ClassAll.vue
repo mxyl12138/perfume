@@ -2,12 +2,12 @@
   <div id="app">
     <div class="my-bar my-title">分类</div>
     <div>
-      <img class='head-img1 head-img' src="https://6d78-mxyl-fw09z-1259665463.tcb.qcloud.la/redhead.png?sign=c46b15858a7ac76d8ac005bd5bb3cbaa&t=1564016710">
-      <img class='head-img2 head-img' src="https://6d78-mxyl-fw09z-1259665463.tcb.qcloud.la/redhead.png?sign=c46b15858a7ac76d8ac005bd5bb3cbaa&t=1564016710">
-      <img class='head-img3 head-img' src="https://6d78-mxyl-fw09z-1259665463.tcb.qcloud.la/redhead.png?sign=c46b15858a7ac76d8ac005bd5bb3cbaa&t=1564016710">
-      <img class='head-img4 head-img' src="https://6d78-mxyl-fw09z-1259665463.tcb.qcloud.la/redhead.png?sign=c46b15858a7ac76d8ac005bd5bb3cbaa&t=1564016710">
-      <img class='head-img5 head-img' src="https://6d78-mxyl-fw09z-1259665463.tcb.qcloud.la/redhead.png?sign=c46b15858a7ac76d8ac005bd5bb3cbaa&t=1564016710">
-      <img class='head-img6 head-img' src="https://6d78-mxyl-fw09z-1259665463.tcb.qcloud.la/redhead.png?sign=c46b15858a7ac76d8ac005bd5bb3cbaa&t=1564016710">
+      <img class='head-img1 head-img' src="https://6d78-mxyl-fw09z-1259665463.tcb.qcloud.la/blackhead.png?sign=e2dba7397a21d46ccf9ead14c66d7403&t=1564017947">
+      <img class='head-img2 head-img' src="https://6d78-mxyl-fw09z-1259665463.tcb.qcloud.la/blackhead.png?sign=e2dba7397a21d46ccf9ead14c66d7403&t=1564017947">
+      <img class='head-img3 head-img' src="https://6d78-mxyl-fw09z-1259665463.tcb.qcloud.la/blackhead.png?sign=e2dba7397a21d46ccf9ead14c66d7403&t=1564017947">
+      <img class='head-img4 head-img' src="https://6d78-mxyl-fw09z-1259665463.tcb.qcloud.la/blackhead.png?sign=e2dba7397a21d46ccf9ead14c66d7403&t=1564017947">
+      <img class='head-img5 head-img' src="https://6d78-mxyl-fw09z-1259665463.tcb.qcloud.la/blackhead.png?sign=e2dba7397a21d46ccf9ead14c66d7403&t=1564017947">
+      <img class='head-img6 head-img' src="https://6d78-mxyl-fw09z-1259665463.tcb.qcloud.la/blackhead.png?sign=e2dba7397a21d46ccf9ead14c66d7403&t=1564017947">
     </div>
     <div class="placehold"></div>
 
@@ -188,7 +188,7 @@
             </div>
           </div>
         </div>
-
+        
         
 
         <div style="width:100%;height:60px;opacity:0"></div>
@@ -210,7 +210,7 @@ export default {
   },
   methods:{
     productgo(index){
-      console.log(this.datas.products2[index].id);
+      // console.log(this.datas.products2[index].id);
       let id = this.datas.products2[index].id;
       this.$router.push({path:`/product/${id}`})
     },
@@ -240,15 +240,15 @@ export default {
   opacity: .7;
 }
 .my-bar{
-  background: #F899A0;
+  background: rgba(255, 255, 255, 0.514);
 }
 .ad {
   width: 100%;height: 110px;
 }
 .ad_div {
-  background-image: url('../../image/2cy1.jpg');
+  background-image: url('../../image/ad1.jpg');
   height: 110px;
-  box-shadow: 0px 0px 12px 1px rgba(78, 211, 189, 0.486);
+  /* box-shadow: 0px 0px 12px 1px rgba(78, 211, 189, 0.486); */
   background-position: 0px -30px;
   background-size: cover;
   background-repeat: no-repeat;

@@ -25,7 +25,7 @@ a :visited {color: black;}
   font-size: 14px;
   position: relative;
   box-sizing: border-box;
-  background-image: url("./image/bg1.jpg");
+  /* background-image: url("./image/bg1.jpg"); */
   background-position: top;
   background-size: contain;
   background-repeat: repeat;
@@ -33,13 +33,14 @@ a :visited {color: black;}
   color: rgba(15, 15, 15, 0.849);
 }
 
+
 /* 轮播图下面点的样式 */
 .mint-swipe {
   height: 100%;
   position: relative;
 }
 .mint-swipe-indicators {
-  transform: translate(-50%, -100%) !important;
+  transform: translate(-50%, 20%) !important;
 }
 
 .mint-swipe-indicator {
@@ -118,4 +119,22 @@ a :visited {color: black;}
 }
 
 .d-none{display: none;}
+.bottom-1{
+  width:100%;height:10px;opacity:0;
+}
+.bottom-2{
+  width:100%;height:20px;opacity:0;
+}
+.bottom-3{
+  width:100%;height:30px;opacity:0;
+}
+.bottom-4{
+  width:100%;height:40px;opacity:0;
+}
+.bottom-5{
+  width:100%;height:50px;opacity:0;
+}
+.bottom-6{
+  width:100%;height:60px;opacity:0;
+}
 </style>

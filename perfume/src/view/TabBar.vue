@@ -63,6 +63,7 @@ import ClassAll from "./classpage/ClassAll.vue";
 import CartAll from "./cartpage/CartAll.vue";
 import MyAll from "./mypage/MyAll.vue";
 export default {
+  // name:'tabbar',
   components:{
     tabbaricon: TabBarIcon,
     firstall: FirstAll,
@@ -86,8 +87,15 @@ export default {
   },
   created(){
     this.tabbar();
+    this.togwc()
   },
   methods:{
+    togwc(){
+      if(this.$route.params.aaa){
+        this.changeState(2);
+        this.selected = "购物车";
+      }
+    },
     tabbar(){
       var tabbar=window.sessionStorage.getItem("tabbar");
       var selected=window.sessionStorage.getItem("selected");
@@ -125,7 +133,7 @@ export default {
   color: #f39c7a !important;
 }
 .mt-tabbar{
-  background: #ffffffb7;
+  background: rgba(235, 232, 233, 0.815);
   border-top: 1px solid #cdcdcd;
   z-index: 100;
 }
